@@ -31,8 +31,8 @@ public class TestStatic {
     private long expectedId = 42;
 
     /*
-     Example of mocking static methods. StaticServiceRegister.registerService internally
-     calls generateNewId() and we are mocking generateNewId() to always return 42
+        Example of mocking static methods. StaticServiceRegister.registerService internally
+        calls generateNewId() and we are mocking generateNewId() to always return 42
      */
     @Test
     public void testStaticRegisterService() throws Exception {
@@ -58,9 +58,9 @@ public class TestStatic {
     }
 
 
-    /*
-         Example of mocking static methods. StaticUtil.thirdStaticMethod calls IdGenerator.generateNewId and we are mocking
-         */
+    /*  Example of mocking static methods. StaticUtil.thirdStaticMethod
+        calls IdGenerator.generateNewId and we are mocking
+    */
     @Test
     public void testMethodThatCallsStaticMethod() {
         // mock all the static methods in a class called "Static"
@@ -85,11 +85,17 @@ public class TestStatic {
 
     }
 
+    /*
+        Testing static method throwing exception and catch it
+     */
     @Test(expected = IllegalStateException.class)
     public void testMockStaticWithoutThatThrowsException() throws Exception {
         StaticUtil.urlParser(null);
     }
 
+    /*
+        Testing static method by mocking throw exception and catch it
+     */
     @Test(expected = IllegalStateException.class)
     public void testMockStaticThatThrowsException() throws Exception {
         mockStatic(StaticUtil.class);
@@ -97,6 +103,9 @@ public class TestStatic {
         StaticUtil.urlParser("shams.dodl");
     }
 
+    /*
+        Testing static method by counting number times it is called
+     */
     @Test
     public void testMockStaticCorrectTimes() throws Exception {
         mockStatic(StaticUtil.class);
@@ -110,6 +119,9 @@ public class TestStatic {
         StaticUtil.returnsNull("hello");
     }
 
+    /*
+        Testing static method by mocking return type. Here we have used custom object type
+     */
     @Test
     public void testMockStaticArgument() throws Exception {
         mockStatic(StaticUtil.class);
@@ -121,6 +133,9 @@ public class TestStatic {
         assertEquals(new TestPojo("shams mali"), result);
     }
 
+    /*
+        Testing static method by mocking argument type.
+     */
     @Test
     public void spyingUsingArgumentCaptor() throws Exception {
         // Given
@@ -146,6 +161,9 @@ public class TestStatic {
         assertEquals(Long.valueOf(20l), captorLong.getValue());
     }
 
+    /*
+        Testing private static method.
+     */
     @Test
     public void spyPrivateStaticMethod() throws Exception {
         // Given
@@ -156,6 +174,9 @@ public class TestStatic {
         assertEquals("shams", result);
     }
 
+    /*
+        Testing private static method with custom argument and return type
+      */
     @Test
     public void spyPrivateStaticWithCustomObjectsMethod() throws Exception {
         // Given
