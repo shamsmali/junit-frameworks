@@ -1,16 +1,13 @@
 package com.razorthink.junit;
 
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
-@RunWith(value = JUnit4.class)
+@RunWith(value = Suite.class)
+@SuiteClasses({TestStatic.class, TestClasses.class, TestNeumericalValues.class})
 public class TestSuite {
 
-    @Test
-    public void testAssert(){
-        Assert.assertTrue(true);
-    }
+
 }
 

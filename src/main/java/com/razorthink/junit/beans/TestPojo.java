@@ -19,6 +19,7 @@ public class TestPojo {
         this.message = message;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

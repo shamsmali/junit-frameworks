@@ -13,9 +13,7 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
-
 import java.lang.reflect.Method;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.powermock.api.mockito.PowerMockito.*;
@@ -50,7 +48,7 @@ public class TestStatic {
 
         when(IdGenerator.generateNewId()).thenReturn(expectedId);
 
-        long actualId = tested.registerService(new Object());
+        long actualId = tested.registerService("hello");
 
         // Assert that the ID is correct
         assertEquals(expectedId, actualId);
