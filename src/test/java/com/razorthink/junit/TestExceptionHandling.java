@@ -30,6 +30,7 @@ public class TestExceptionHandling {
     @Test
     public void testCheckedException(){
         thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("Array is empty");
         HelperService helperService = new HelperService();
         final String result = helperService.parseArrayWithException(new ArrayList<String>());
         assertNull(result);
