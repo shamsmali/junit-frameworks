@@ -1,9 +1,11 @@
 package com.razorthink.junit;
 
 import com.razorthink.junit.beans.TestPojo;
+import com.razorthink.junit.classess.AbstractMethodMocking;
 import com.razorthink.junit.classess.Helper;
 import com.razorthink.junit.classess.HelperService;
 import com.razorthink.junit.jstatic.StaticServiceRegister;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -11,6 +13,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.powermock.api.mockito.PowerMockito.*;
 
 /**
@@ -116,5 +119,26 @@ public class TestClasses {
         assertEquals(result, new TestPojo("good mocking"));
     }
 
+
+    @Test
+    public void mocksAbstractClasses() throws Exception {
+        assertNotNull(mock(AbstractMethodMocking.class));
+    }
+
+    @Test
+    public void canSpyOnAnonymousClasses() throws Exception {
+        AbstractMethodMocking tested = new AbstractMethodMocking() {
+            @Override
+            protected String getIt() {
+                return null;
+            }
+        };
+
+        Assert.assertNull(tested.getValue());
+        AbstractMethodMocking spy = spy(tested);
+        when(spy.getValue()).thenReturn("something");
+
+        assertEquals("something", spy.getValue());
+    }
 
 }

@@ -38,7 +38,7 @@ public class TestNeumericalValues {
     public void assertFloat() {
 
         Float d = 200.4f;
-        assertEquals(d, Float.valueOf(200.0f));
+        assertEquals(d, Float.valueOf(200.4f));
 
         float ff = 200.04f;
         assertEquals(ff, 200.04f, 0.0);

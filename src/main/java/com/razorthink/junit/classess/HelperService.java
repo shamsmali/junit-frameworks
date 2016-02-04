@@ -1,9 +1,12 @@
 package com.razorthink.junit.classess;
 
+import com.razorthink.junit.beans.H2DBManager;
+import com.razorthink.junit.beans.SimpleDAO;
 import com.razorthink.junit.beans.TestPojo;
 import com.razorthink.junit.jstatic.StaticServiceRegister;
 import com.razorthink.junit.jstatic.StaticUtil;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -12,9 +15,10 @@ import java.util.List;
 public class HelperService {
 
     private Helper helper = new Helper();
+    private SimpleDAO simpleDAO;
 
     public HelperService() {
-
+        this.simpleDAO = new SimpleDAO();
     }
 
     public String extractDetails() {
@@ -55,6 +59,23 @@ public class HelperService {
             throw new IllegalStateException("Array is empty");
         }
         return data.get(1);
+    }
+
+    public void throwsException() throws IOException {
+        try {
+            throw new IOException();
+        } catch (IOException e) {
+            //e.printStackTrace(System.err);
+            throw e;
+        }
+    }
+
+    public boolean saveMessage(final String message) {
+        return simpleDAO.saveMessage("hello shams");
+    }
+
+    public void retriveMessages() {
+
     }
 
 }
