@@ -35,7 +35,7 @@ public class HelperService {
 
     public TestPojo callsStaticAndInstanceBasedClassessWithReturnType() {
         Helper helper = new Helper("asd");
-        String helperResult = helper.doSomething();
+         helper.doSomething();
         TestPojo ssResult = new StaticServiceRegister().registerService(new TestPojo("hello"));
         someMethod(ssResult);
         return ssResult;
