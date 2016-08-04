@@ -60,7 +60,8 @@ public class TestClasses {
     public void testMockInstanceAndMethod() throws Exception {
 
         Helper helper = spy(new Helper("shams"));
-        when(helper.getMessage()).thenReturn("hello");
+        // in case you don't want the method to be called
+        doReturn("hello").when(helper).getMessage();
         String actual = helper.getMessage();
         assertEquals(actual, "hello");
     }
